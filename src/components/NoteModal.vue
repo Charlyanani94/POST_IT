@@ -127,13 +127,13 @@ export default {
       if (!trimmedTitle) {
         this.errors.title = "Le titre est obligatoire."
       } else if (trimmedTitle.length < 2) {
-        this.errors.title = "Le titre doit contenir au moins 3 caractères."
+        this.errors.title = "Le titre doit contenir au moins 2 caractères."
       }
 
       if (!trimmedContent) {
         this.errors.content = "Le contenu est obligatoire."
       } else if (trimmedContent.length < 5) {
-        this.errors.content = "Le contenu doit contenir au moins 10 caractères."
+        this.errors.content = "Le contenu doit contenir au moins 5 caractères."
       }
 
       return !this.errors.title && !this.errors.content
