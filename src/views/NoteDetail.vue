@@ -36,6 +36,7 @@ onMounted(() => {
     router.back()
   }
 })
+
 function toggleEdit() {
   if (isEditing.value) {
     currentNote.title = editedNote.title
@@ -74,7 +75,9 @@ function formatDate(date: Date) {
       <button @click="goBack" class="flex items-center gap-2 text-blue-600 dark:text-blue-400 mb-6">
         ← Retour
       </button>
-<div class="bg-yellow-200 rounded-2xl p-8 shadow-xl relative transform rotate-1 dark:shadow-black/50 transition-colors duration-300">        <div class="absolute top-4 right-4 flex gap-2">
+
+      <div class="bg-yellow-200 rounded-2xl p-8 shadow-xl relative transform rotate-1 dark:shadow-black/50 transition-colors duration-300">
+        <div class="absolute top-4 right-4 flex gap-2">
           <button
             @click="toggleEdit"
             class="p-2 rounded-full bg-white/80 dark:bg-gray-700/80 hover:bg-white dark:hover:bg-gray-600 transition"
@@ -89,6 +92,7 @@ function formatDate(date: Date) {
             🗑️
           </button>
         </div>
+
         <input
           v-if="isEditing"
           v-model="editedNote.title"
@@ -96,17 +100,25 @@ function formatDate(date: Date) {
           placeholder="Titre"
         />
         <h1 v-else class="text-2xl font-bold text-gray-900">{{ currentNote.title }}</h1>
+
         <p class="text-sm text-gray-700 mt-1">
           Dernière mise à jour : {{ formatDate(currentNote.updatedAt) }}
         </p>
+
         <textarea
           v-if="isEditing"
           v-model="editedNote.content"
           rows="10"
-          class="mt-4 w-full bg-transparent outline-none resize-none font-sans text-gray-900"
+          class="mt-4 w-full bg-transparent outline-none resize-none font-sans text-gray-900 break-words"
           placeholder="Écrivez votre note ici..."
         ></textarea>
-        <p v-else class="mt-4 whitespace-pre-wrap text-gray-900">{{ currentNote.content }}</p>
+
+        <p
+          v-else
+          class="mt-4 whitespace-pre-wrap break-words text-gray-900"
+        >
+          {{ currentNote.content }}
+        </p>
       </div>
     </div>
   </div>
