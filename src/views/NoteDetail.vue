@@ -93,18 +93,25 @@ function formatDate(date: Date) {
           </button>
         </div>
 
+        <!-- Titre -->
         <input
           v-if="isEditing"
           v-model="editedNote.title"
-          class="w-full text-2xl font-bold bg-transparent outline-none text-gray-900"
+          class="w-full text-2xl font-bold bg-transparent outline-none text-gray-900 break-words"
           placeholder="Titre"
         />
-        <h1 v-else class="text-2xl font-bold text-gray-900">{{ currentNote.title }}</h1>
+        <h1
+          v-else
+          class="text-2xl font-bold text-gray-900 break-words"
+        >
+          {{ currentNote.title }}
+        </h1>
 
         <p class="text-sm text-gray-700 mt-1">
           Dernière mise à jour : {{ formatDate(currentNote.updatedAt) }}
         </p>
 
+        <!-- Contenu -->
         <textarea
           v-if="isEditing"
           v-model="editedNote.content"
