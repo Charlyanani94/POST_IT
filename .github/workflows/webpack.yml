@@ -2,7 +2,7 @@ name: NodeJS with Webpack
 on:
   push:
     branches:
-      - C_DEV_FEAT
+      - main
 
 jobs:
   build-and-test:
